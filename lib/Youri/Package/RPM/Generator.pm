@@ -140,7 +140,7 @@ sub get_source {
     croak "Not a class method" unless ref $self;
 
     my $command = sprintf(
-        'rpm -bs --define "_topdir %s" %s/SPECS/%s.spec >/dev/null 2>&1',
+        'rpmbuild -bs --define "_topdir %s" %s/SPECS/%s.spec >/dev/null 2>&1',
         $self->{_topdir},
         $self->{_topdir},
         $self->{_tags}->{name}
@@ -174,7 +174,7 @@ sub get_binaries {
     mkdir $dir;
 
     my $command = sprintf(
-        'rpm -bb --define "_topdir %s" %s/SPECS/%s.spec >/dev/null 2>&1',
+        'rpmbuild -bb --define "_topdir %s" %s/SPECS/%s.spec >/dev/null 2>&1',
         $self->{_topdir},
         $self->{_topdir},
         $self->{_tags}->{name}
