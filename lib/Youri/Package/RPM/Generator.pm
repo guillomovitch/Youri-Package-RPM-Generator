@@ -18,7 +18,7 @@ use Carp;
 use Text::Template;
 use File::Temp qw/tempdir/;
 
-our $VERSION = 0.1;
+our $VERSION = 0.1.0;
 
 my %defaults = (
     name    => 'test',
