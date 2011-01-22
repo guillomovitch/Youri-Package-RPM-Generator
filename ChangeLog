@@ -1,2 +1,5 @@
+2011-01-22 Guillaume Rousse <guillomovitch@zarb.org> 0.1.1
+	* ensure %buildroot is created during install, to avoid build failure
+
 2007-03-05 Guillaume Rousse <guillomovitch@zarb.org> 0.1.0
 	* initial release
