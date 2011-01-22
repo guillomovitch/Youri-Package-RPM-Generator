@@ -50,6 +50,7 @@ rm -rf %{buildroot}
 %build
 
 %install
+install -d -m 755 %{buildroot}
 
 %clean
 rm -rf %{buildroot}
