@@ -17,7 +17,7 @@ use warnings;
 use Carp;
 use Text::Template;
 use File::Temp qw/tempdir/;
-use version; our $VERSION = qv('0.1.1');
+use version; our $VERSION = qv('0.1.2');
 
 my %defaults = (
     name    => 'test',
