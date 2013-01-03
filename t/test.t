@@ -6,21 +6,13 @@ use warnings;
 use Test::More;
 use Test::Exception;
 use File::Spec;
+use File::Which;
 use URPM;
 
-my $found;
-foreach my $dir (File::Spec->path()) {
-    my $binary = File::Spec->catfile($dir, 'rpmbuild');
-    if (-f $binary && -x _) {
-        $found = 1;
-        last;
-    }
-}
-if (!$found) {
-    plan(skip_all => 'unable to find rpmbuild; skipping');
-} else {
-    plan(tests => 13);
-}
+plan(skip_all => 'unable to find rpmbuild; skipping')
+    if !which('rpmbuild');
+
+plan(tests => 13);
 
 use_ok('Youri::Package::RPM::Generator');
 
