@@ -30,18 +30,18 @@ my %defaults = (
 );
 
 my $template = Text::Template->new(TYPE => 'STRING', SOURCE => <<'EOF');
-Name:		{$name}
-Version:	{$version}
-Release:	{$release}
-Summary:	{$summary}
-License:	{$license}
-Group:		{$group}
-{ $url     ? "Url:   $url" : '' }
-{ $buildarch     ? "BuildArch:   $buildarch" : '' }
+Name:		[% $name %]
+Version:	[% $version  %]
+Release:	[% $release %]
+Summary:	[% $summary %]
+License:	[% $license %]
+Group:		[% $group %]
+[% $url     ? "Url:   $url" : '' %]
+[% $buildarch     ? "BuildArch:   $buildarch" : '' %]
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
-{$description}
+[% $description %]
 
 %prep
 rm -rf %{buildroot}
@@ -59,7 +59,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 
 %changelog
-{$changelog}
+[% $changelog %]
 EOF
 
 =head1 CLASS METHODS
@@ -114,8 +114,9 @@ sub new {
     open my $fh, '>', $spec  or die "Can't open $spec: $!";
 
     $template->fill_in(
-        HASH   => $options{tags},
-        OUTPUT => $fh
+        DELIMITERS => [ '[% ', ' %]' ],
+        HASH       => $options{tags},
+        OUTPUT     => $fh
     );
     close $fh;
 
