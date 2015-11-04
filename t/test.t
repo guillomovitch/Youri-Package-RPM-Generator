@@ -38,7 +38,7 @@ my @binary_rpms;
 lives_ok {
     @binary_rpms = $generator->get_binaries()
 } 'generating binary packages works';
-is(scalar @binary_rpms, 2, 'two package');
+is(scalar @binary_rpms, 1, 'two package');
 my $binary_rpm = $binary_rpms[0];
 ok(-f $binary_rpm, 'binary package exists');
 $urpm->parse_rpm($binary_rpm, keep_all_tags => 1);

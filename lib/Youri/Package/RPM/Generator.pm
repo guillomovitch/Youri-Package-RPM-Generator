@@ -32,6 +32,7 @@ my %defaults = (
 );
 
 my $template = Text::Template->new(TYPE => 'STRING', SOURCE => <<'EOF');
+%define debug_package %{nil}
 Name:		[% $name %]
 Version:	[% $version  %]
 Release:	[% $release %]
